@@ -7,7 +7,7 @@ const { register, login} = require('./handlers/users')
 app.get('/ingredients', getAllIngredients);
 app.post('/ingredient', createIngredient);
 
-//User route
+// User route
 app.post('/register', register)
 app.post('/login', login)
 
