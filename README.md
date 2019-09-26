@@ -17,25 +17,25 @@ This is the **Firebase API** for the Brewy project. We use **Express** as a web 
 | --------------------- | :-----------: | :-------------------: | ----------- | 
 | `/register`           | `POST`        | :white_check_mark:    | Register new user |
 | `/login`              | `POST`        | :white_check_mark:    | Login user |
-| `/ingredients`        | `GET`         | :white_check_mark:    | Get ingredients |
 | `/ingredient`         | `POST`        | :white_check_mark:    | Create & update ingredient |
-| `/tags`               | `GET`         | :x:                   | Get tags |
-| `/tag`                | `GET`         | :x:                   | Get specific tag |
+| `/ingredients`        | `GET`         | :white_check_mark:    | Get ingredients |
 | `/tag`                | `POST`        | :x:                   | Create tag |
-| `/tag`                | `PUT`         | :x:                   | Update tag |
-| `/processes`          | `GET`         | :x:                   | Get processes |
-| `/process`            | `GET`         | :x:                   | Get specific process |
-| `/process`            | `POST`        | :x:                   | Create process |
-| `/process`            | `PUT`         | :x:                   | Update process |
-| `/brews`              | `GET`         | :x:                   | Get brews |
-| `/brew`               | `GET`         | :x:                   | Get specific brew |
+| `/tag/:tagId`         | `PUT`         | :x:                   | Update tag |
+| `/tag/:tagId`         | `GET`         | :x:                   | Get specific tag |
+| `/process`            | `POST`        | :white_check_mark:    | Create process |
+| `/process/:processId` | `PUT`         | :white_check_mark:    | Update process |
+| `/process/:processId` | `GET`         | :white_check_mark:    | Get specific process |
 | `/brew`               | `POST`        | :x:                   | Create brew |
-| `/brew`               | `PUT`         | :x:                   | Update brew |
+| `/brew/:brewId`       | `PUT`         | :x:                   | Update brew |
+| `/brew/:brewId`       | `GET`         | :x:                   | Get specific brew |
+| `/brews`              | `GET`         | :x:                   | Get brews |
+
 
 ---
 
 ## Requests 
 All request to the api need to have a **header** `Content-type: application/json` and a **body** with key values in json.
+For post and put you will need to include `Authentication` header with `Bearer ${TokenHere}`
 TODO better explanation and example code for a fetch() call
 
 ## Users
@@ -196,6 +196,13 @@ Example:
     ]
 }
 ```
+
+---
+
+## Todo
+| Status    | Description |
+| :-------: | ----------- | 
+| :x:       | Add typechecking for all incomming data.
 
 ---
 
