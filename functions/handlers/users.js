@@ -1,21 +1,29 @@
-const firebase = require('firebase')
-const { firebaseConfig } = require('../config')
+const firebase = require('firebase');
+const { db } = require('../util/admin');
+const { firebaseConfig } = require('../config');
 firebase.initializeApp(firebaseConfig);
 
-let token; 
+let token, userId; 
 exports.register = (request, response) => {
-    const newUser = {...request.body};
+    const newUser = {
+        email: request.body.email,
+        password: request.body.password,
+    };
 
     firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password)
     .then(data => {
+        userId = data.user.uid;
         return data.user.getIdToken();
     })
     .then(idToken => {
         token = idToken;
-        let user = firebase.auth().currentUser
-        return user.updateProfile({
-            displayName: newUser.displayName
-        })
+        const userProfile = {
+            email: request.body.email,
+            displayName: request.body.displayName,
+            createdAt: new Date().toISOString(),
+            userId
+        }
+        return db.collection('users').doc(newUser.email).set(userProfile)
     })
     .then(() => {
         return response.status(201).json({ token })

@@ -23,7 +23,8 @@ exports.getAllIngredients = (request, response) => {
 
 exports.createIngredient = (request, response) => {
     const newIngredient = {
-        name: request.body.name
+        name: request.body.name,
+        createdBy: request.user.profile.email
     }
 
     db
