@@ -32,8 +32,8 @@ exports.createIngredient = (request, response) => {
     .doc(slugify(request.body.name.toLowerCase()))
     .set(newIngredient)
     .then(() => {
-        response.json({ 
-            message: 'Success'
+        response.status(201).json({ 
+            message: 'Created ingredient'
         })
     })
     .catch((err) => {
