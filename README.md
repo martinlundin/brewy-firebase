@@ -1,3 +1,8 @@
+
+# :x: Work in progress. Wait for v1.0.0 :x:
+
+---
+
 # Brewy
 Keep track and collect data for your brews. [Add more description]
 
