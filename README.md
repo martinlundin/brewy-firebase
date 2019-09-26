@@ -13,24 +13,22 @@ This is the **Firebase API** for the Brewy project. We use **Express** as a web 
 
 ## Endpoints
 
-| Endpoint              | Method        | Status  | Description |
-| --------------------- | :-----------: | :-----: | ----------- | 
-| `/ingredients`        | `GET`         | :x:     | Get ingredients |
-| `/ingredient`         | `GET`         | :x:     | Get specific ingredient |
-| `/ingredient`         | `POST`        | :x:     | Create ingredient |
-| `/ingredient`         | `PUT`         | :x:     | Update ingredient |
-| `/tags`               | `GET`         | :x:     | Get tags |
-| `/tag`                | `GET`         | :x:     | Get specific tag |
-| `/tag`                | `POST`        | :x:     | Create tag |
-| `/tag`                | `PUT`         | :x:     | Update tag |
-| `/processes`          | `GET`         | :x:     | Get processes |
-| `/process`            | `GET`         | :x:     | Get specific process |
-| `/process`            | `POST`        | :x:     | Create process |
-| `/process`            | `PUT`         | :x:     | Update process |
-| `/brews`              | `GET`         | :x:     | Get brews |
-| `/brew`               | `GET`         | :x:     | Get specific brew |
-| `/brew`               | `POST`        | :x:     | Create brew |
-| `/brew`               | `PUT`         | :x:     | Update brew |
+| Endpoint              | Method        | Status                | Description |
+| --------------------- | :-----------: | :-------------------: | ----------- | 
+| `/ingredients`        | `GET`         | :white_check_mark:    | Get ingredients |
+| `/ingredient`         | `POST`        | :white_check_mark:    | Create & update ingredient |
+| `/tags`               | `GET`         | :x:                   | Get tags |
+| `/tag`                | `GET`         | :x:                   | Get specific tag |
+| `/tag`                | `POST`        | :x:                   | Create tag |
+| `/tag`                | `PUT`         | :x:                   | Update tag |
+| `/processes`          | `GET`         | :x:                   | Get processes |
+| `/process`            | `GET`         | :x:                   | Get specific process |
+| `/process`            | `POST`        | :x:                   | Create process |
+| `/process`            | `PUT`         | :x:                   | Update process |
+| `/brews`              | `GET`         | :x:                   | Get brews |
+| `/brew`               | `GET`         | :x:                   | Get specific brew |
+| `/brew`               | `POST`        | :x:                   | Create brew |
+| `/brew`               | `PUT`         | :x:                   | Update brew |
 
 ---
 
