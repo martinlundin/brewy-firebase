@@ -15,6 +15,8 @@ This is the **Firebase API** for the Brewy project. We use **Express** as a web 
 
 | Endpoint              | Method        | Status                | Description |
 | --------------------- | :-----------: | :-------------------: | ----------- | 
+| `/register`           | `POST`        | :white_check_mark:    | Register new user |
+| `/login`              | `POST`        | :white_check_mark:    | Login user |
 | `/ingredients`        | `GET`         | :white_check_mark:    | Get ingredients |
 | `/ingredient`         | `POST`        | :white_check_mark:    | Create & update ingredient |
 | `/tags`               | `GET`         | :x:                   | Get tags |
@@ -31,6 +33,22 @@ This is the **Firebase API** for the Brewy project. We use **Express** as a web 
 | `/brew`               | `PUT`         | :x:                   | Update brew |
 
 ---
+
+## Requests 
+All request to the api need to have a **header** `Content-type: application/json` and a **body** with key values in json.
+TODO better explanation and example code for a fetch() call
+
+## Users
+**/register**
+Keys accepted in body:
+`email`
+`password`
+`displayName`
+
+**/login**
+Keys accepted in body:
+`email`
+`password`
 
 ## Data
 There are 3 types of data colletions. **Ingredients**, **processes**, and **brews**. Here are some details about the collections and examples on GET responses on specific data collections.
@@ -189,3 +207,19 @@ Example:
 | :x:       | Make brew catagory as a collection and add more information about the type, like description, images and such. For now it is just a string.
 
 If you have any issues or improvments, please open one in this github repository.
+
+---
+
+## Development
+You are very welcome to add contribute to the project. Follow these steps.
+#### Installation
+- Clone this project from git, in terminal run `git clone https://github.com/martinlundin/brewy-firebase.git`
+- Go to `https://console.firebase.google.com` and create your own Firebase project.
+- In the Firebase project under Authentication, create app.
+- Install firebase-tools globally, in terminal run `npm install -g firebase-tools`
+- Login to firebase in terminal run `firebase login`
+- Now in this project, in `.firebaserc` file, change `default: [YOUR-PROJECT-ID]`
+- From Firebase go to Project settings > Your apps > Config. Copy the firebaseConfig.
+- In `/functions/` create `config.js`. Paste your firebaseConfig. Also, to the bottom of the file add `module.exports = { firebaseConfig }`
+
+TODO this should work but test so it actually does
