@@ -203,6 +203,7 @@ Example:
 ## Todo
 | Status    | Description |
 | :-------: | ----------- | 
+| :x:       | Add reminder function.
 | :x:       | Add typechecking for all incomming data.
 
 ---
