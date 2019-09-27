@@ -5,7 +5,6 @@ exports.createProcess = (request, response) => {
         brewId: request.body.type,
         type: request.body.type,
         createdAt: new Date().toISOString(),
-        remindAt: request.body.remindAt,
         startedAt: (request.body.startedAt ? request.body.startedAt : new Date().toISOString()),
         ingredients: request.body.ingredients,
     }
@@ -29,7 +28,6 @@ exports.updateProcess = (request, response) => {
     process.updatedAt = new Date().toISOString()
     if(request.body.type) process.type = request.body.type
     if(request.body.startedAt) process.startedAt = request.body.startedAt
-    if(request.body.remindAt) process.remindAt = request.body.remindAt
     if(request.body.endedAt) process.endedAt = request.body.endedAt
     if(request.body.ingredients) process.ingredients = request.body.ingredients
 
