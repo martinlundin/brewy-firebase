@@ -6,8 +6,7 @@ exports.createBrew = (request, response) => {
         createdBy: request.user.email,
         name: request.body.name,
         category: request.body.category,
-        rating: null,
-        ratings: [],
+        ratings: {},
     }
 
     db
@@ -36,6 +35,24 @@ exports.updateBrew = (request, response) => {
     .update(brew)
     .then(() => {
         return response.json({ message: `Updated ${brewId}`})
+    })
+    .catch(error => {
+        console.error(error)
+        return response.status(500).json({ error })
+    })
+}
+
+exports.setRating = (request, response) => {
+    const brewId = request.params.brewId
+    const rating = {}
+    rating[`ratings.${request.user.uid}`] = request.body.rating
+
+    db
+    .collection('brews')
+    .doc(brewId)
+    .update(rating)
+    .then(() => {
+        return response.json({ message: `Rating set`})
     })
     .catch(error => {
         console.error(error)
