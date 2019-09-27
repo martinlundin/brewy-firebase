@@ -27,6 +27,7 @@ This is the **Firebase API** for the Brewy project. We use **Express** as a web 
 | `/process/:processId` | `GET`         | :white_check_mark:    | Get specific process |
 | `/brew`               | `POST`        | :white_check_mark:    | Create brew |
 | `/brew/:brewId`       | `PUT`         | :white_check_mark:    | Update brew |
+| `/brew/:brewId/rating`| `POST`        | :white_check_mark:    | Set brew rating |
 | `/brew/:brewId`       | `GET`         | :white_check_mark:    | Get specific brew |
 | `/brews`              | `GET`         | :white_check_mark:    | Get brews |
 
