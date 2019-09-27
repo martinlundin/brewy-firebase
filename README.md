@@ -25,10 +25,10 @@ This is the **Firebase API** for the Brewy project. We use **Express** as a web 
 | `/process`            | `POST`        | :white_check_mark:    | Create process |
 | `/process/:processId` | `PUT`         | :white_check_mark:    | Update process |
 | `/process/:processId` | `GET`         | :white_check_mark:    | Get specific process |
-| `/brew`               | `POST`        | :x:                   | Create brew |
-| `/brew/:brewId`       | `PUT`         | :x:                   | Update brew |
-| `/brew/:brewId`       | `GET`         | :x:                   | Get specific brew |
-| `/brews`              | `GET`         | :x:                   | Get brews |
+| `/brew`               | `POST`        | :white_check_mark:    | Create brew |
+| `/brew/:brewId`       | `PUT`         | :white_check_mark:    | Update brew |
+| `/brew/:brewId`       | `GET`         | :white_check_mark:    | Get specific brew |
+| `/brews`              | `GET`         | :white_check_mark:    | Get brews |
 
 
 ---

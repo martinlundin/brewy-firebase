@@ -22,6 +22,7 @@ app.get('/process/:processId', getProcess);
 
 // Brew routes
 app.post('/brew', FBAuth, createBrew);
+app.get('/brew/:brewId', updateBrew);
 app.get('/brew/:brewId', getBrew);
 app.get('/brews', getBrews);
 
