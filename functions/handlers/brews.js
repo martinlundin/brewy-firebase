@@ -31,9 +31,9 @@ exports.updateBrew = (request, response) => {
     if(request.body.category) brew.category = request.body.category
 
     db
-    .collection('brew')
+    .collection('brews')
     .doc(brewId)
-    .updated(brew)
+    .update(brew)
     .then(() => {
         return response.json({ message: `Updated ${brewId}`})
     })

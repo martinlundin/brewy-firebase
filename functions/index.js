@@ -5,7 +5,7 @@ const { FBAuth } = require('./util/middleware')
 const { register, login } = require('./handlers/users')
 const { createIngredient, getAllIngredients } = require('./handlers/ingredients')
 const { createProcess, updateProcess, getProcess } = require('./handlers/processes')
-const { createBrew, getBrew, getBrews } = require('./handlers/brews')
+const { createBrew, updateBrew, setRating, getBrew, getBrews } = require('./handlers/brews')
 
 // User routes
 app.post('/register', register)
@@ -22,7 +22,7 @@ app.get('/process/:processId', getProcess);
 
 // Brew routes
 app.post('/brew', FBAuth, createBrew);
-app.get('/brew/:brewId', updateBrew);
+app.put('/brew/:brewId', updateBrew);
 app.get('/brew/:brewId', getBrew);
 app.get('/brews', getBrews);
 
