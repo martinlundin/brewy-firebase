@@ -17,12 +17,12 @@ app.get('/ingredients', getAllIngredients);
 
 // Processes routes
 app.post('/process', FBAuth, createProcess)
-app.put('/process/:processId', updateProcess);
+app.put('/process/:processId', FBAuth, updateProcess);
 app.get('/process/:processId', getProcess);
 
 // Brew routes
 app.post('/brew', FBAuth, createBrew);
-app.put('/brew/:brewId', updateBrew);
+app.put('/brew/:brewId', FBAuth, updateBrew);
 app.post('/brew/:brewId/rating', FBAuth, setRating)
 app.get('/brew/:brewId', getBrew);
 app.get('/brews', getBrews);
