@@ -2,6 +2,7 @@ const { db } = require('../util/admin');
 
 exports.createProcess = (request, response) => {
     const newProcess = {
+        brewId: request.body.type,
         type: request.body.type,
         createdAt: new Date().toISOString(),
         remindAt: request.body.remindAt,
