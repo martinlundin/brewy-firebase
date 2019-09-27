@@ -1,4 +1,4 @@
-const { db, admin } = require('../util/admin');
+const { db } = require('../util/admin');
 
 exports.createProcess = (request, response) => {
     const newProcess = {
