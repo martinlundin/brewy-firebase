@@ -269,6 +269,7 @@ Get all the data for the brew. Includes more data than the `/brews` endpoint.
 | :x:       | Add Data validation and error response messages (do when settings up typechecking)
 | :x:       | Add typechecking for all incomming data.
 | :x:       | Change error handling to be consistent and precise
+| :x:       | Add linting for cleaner code
 
 ---
 
