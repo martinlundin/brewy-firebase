@@ -3,7 +3,7 @@ const { db, admin } = require('../util/admin');
 exports.createBrew = (request, response) => {
     const newBrew = {
         createdAt: new Date().toISOString(),
-        createdBy: request.user.email,
+        createdBy: request.user.uid,
         name: request.body.name,
         category: request.body.category,
         rating: null,
@@ -23,19 +23,22 @@ exports.createBrew = (request, response) => {
 }
 
 exports.updateBrew = (request, response) => {
-    const brewId = request.params.brewId
-    const brew = {}
+    const brewDocument = db.collection('brews').doc(request.params.brewId)
 
-    brew.updatedAt = new Date().toISOString()
-    if(request.body.name) brew.name = request.body.name
-    if(request.body.category) brew.category = request.body.category
+    brewDocument.get()    
+    .then(doc => {
+        if(!doc.exists) return response.status(404).json({ error: {message: 'Brew not found'}})
+        if(doc.data().createdBy !== request.user.uid) return response.status(403).json({ error: {message: 'User not allowed to access brew'}})
+        
+        const brew = {}
+        brew.updatedAt = new Date().toISOString()
+        if(request.body.name) brew.name = request.body.name
+        if(request.body.category) brew.category = request.body.category
 
-    db
-    .collection('brews')
-    .doc(brewId)
-    .update(brew)
+        return brewDocument.update(brew)
+    })
     .then(() => {
-        return response.json({ message: `Updated ${brewId}`})
+        return response.json({ message: 'Updated brew'})
     })
     .catch(error => {
         console.error(error)
