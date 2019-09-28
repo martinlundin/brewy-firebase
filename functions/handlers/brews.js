@@ -14,7 +14,7 @@ exports.createBrew = (request, response) => {
     .collection('brews')
     .add(newBrew)
     .then(ref => {
-        return response.status(201).json({ message: `Added brew ${ref.id}`})
+        return response.status(201).json({ message: `Created brew`, id: ref.id})
     })
     .catch(error => {
         console.error(error)

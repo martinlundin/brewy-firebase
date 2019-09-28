@@ -4,7 +4,7 @@ const slugify = require('slugify');
 exports.createIngredient = (request, response) => {
     const newIngredient = {
         name: request.body.name,
-        createdBy: request.user.profile.email
+        createdBy: request.user.uid
     }
 
     db
