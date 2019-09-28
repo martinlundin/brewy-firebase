@@ -270,6 +270,7 @@ Get all the data for the brew. Includes more data than the `/brews` endpoint.
 | :x:       | Add typechecking for all incomming data.
 | :x:       | Change error handling to be consistent and precise
 | :x:       | Add linting for cleaner code
+| :x:       | Add process.ingredients.measurements, process.type and brew.category to their own collections. This would help so all users use the same naming
 
 ---
 
