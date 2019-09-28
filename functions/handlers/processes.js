@@ -4,6 +4,7 @@ exports.createProcess = (request, response) => {
     const newProcess = {
         brewId: request.body.type,
         type: request.body.type,
+        createdBy: request.user.uid,
         createdAt: new Date().toISOString(),
         startedAt: (request.body.startedAt ? request.body.startedAt : new Date().toISOString()),
         ingredients: request.body.ingredients,
@@ -22,24 +23,27 @@ exports.createProcess = (request, response) => {
 }
 
 exports.updateProcess = (request, response) => {
-    const processId = request.params.processId;
-    const process = {}
+    const processDocument = db.collection('processes').doc(request.params.processId)
 
-    process.updatedAt = new Date().toISOString()
-    if(request.body.type) process.type = request.body.type
-    if(request.body.startedAt) process.startedAt = request.body.startedAt
-    if(request.body.endedAt) process.endedAt = request.body.endedAt
-    if(request.body.ingredients) process.ingredients = request.body.ingredients
+    processDocument.get()    
+    .then(doc => {
+        if(!doc.exists) return response.status(404).json({ error: {message: 'Process not found'}})
+        if(doc.data().createdBy !== request.user.uid) return response.status(403).json({ error: {message: 'User not allowed to access process'}})
+        
+        const process = {}
+        process.updatedAt = new Date().toISOString()
+        if(request.body.type) process.type = request.body.type
+        if(request.body.startedAt) process.startedAt = request.body.startedAt
+        if(request.body.endedAt) process.endedAt = request.body.endedAt
+        if(request.body.ingredients) process.ingredients = request.body.ingredients
 
-    db
-    .collection('processes')
-    .doc(processId)
-    .update(process)
-    .then(data => {
-        return response.status(201).json({ message: 'Updated process'})
+        return processDocument.update(process)
+    })
+    .then(() => {
+        return response.json({ message: 'Updated process'})
     })
     .catch(error => {
-        console.error(error);
+        console.error(error)
         return response.status(500).json({ error })
     })
 }
@@ -56,6 +60,25 @@ exports.getProcess = (request, response) => {
         } else {
             return response.status(404).json({ error: { message: 'No process with that id' } })
         }
+    })
+    .catch(error => {
+        console.error(error)
+        return response.status(500).json({ error })
+    })
+}
+
+exports.deleteProcess = (request, response) => {
+    const processDocument = db.collection('processes').doc(request.params.processId)
+
+    processDocument.get()
+    .then(doc => {
+        if(!doc.exists) return response.status(404).json({ error: {message: 'Process not found'}})
+        if(doc.data().createdBy !== request.user.uid) return response.status(403).json({ error: {message: 'User not allowed to access process'}})
+        
+        return processDocument.delete()
+    })
+    .then(() => {
+        return response.json({ message: 'Process deleted'})
     })
     .catch(error => {
         console.error(error)

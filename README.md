@@ -206,6 +206,7 @@ Example:
 | :x:       | Add reminder function.
 | :x:       | Add Data validation and error response messages (do when settings up typechecking)
 | :x:       | Add typechecking for all incomming data.
+| :x:       | Change error handling to be consistent and precise
 
 ---
 
