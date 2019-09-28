@@ -1,9 +1,4 @@
-
-# :x: Work in progress. Wait for v1.0.0 :x:
-
----
-
-# Brewy
+# :beer: Brewy
 Keep track and collect data for your brews. [Add more description]
 
 ## Firebase API
@@ -72,7 +67,7 @@ For now there are 3 types of data colletions. **ingredients**, **processes**, an
 
 All time-fields uses the ISO format, example `new Date().toISOString()`
 
-#### Ingredients
+### :potable_water: Ingredients:potable_water: 
 This is where all the different ingredients are stored. These are later used in a process.
 ##### `POST` `/ingredient`
 ```
@@ -80,7 +75,7 @@ This is where all the different ingredients are stored. These are later used in 
     "name": "Water"
 }
 ```
-Response
+<sub>Response</sub>
 ```
 {
     "message": "Created ingredient"
@@ -92,7 +87,7 @@ Response
     "name": "Water"
 }
 ```
-Response
+<sub>Response</sub>
 ```
 [
     {
@@ -108,7 +103,7 @@ Response
 ]
 ```
 
-#### Processes
+### :hourglass: Processes :hourglass:
 This is a collection of ingredients being processed in a certain type of way. The process is also alot about keeping track of time. Processes are created as a part of a brew, meaning the brewId should point to it's "parent".
 
 ##### `POST` `/process`
@@ -120,7 +115,7 @@ Create a new process. Note that if startedAt is not provided it will use the cur
 	"startedAt": "2019-09-28T11:54:23.766Z"
 }
 ```
-Response
+<sub>Response</sub>
 ```
 {
     "message": "Created process",
@@ -137,7 +132,7 @@ Ingredients cannot be added in this request, use the `/process/:processId/ingred
 	"startedAt": "2019-08-28T11:54:23.766Z"
 }
 ```
-Response
+<sub>Response</sub>
 ```
 {
     "message": "Updated process"
@@ -154,7 +149,7 @@ If ingredient object is not found and not removed, it still returns sucess messa
 	"measurement": "liter"
 }
 ```
-Response
+<sub>Response</sub>
 ```
 {
     "message": "Updated process ingredient"
@@ -163,7 +158,7 @@ Response
 
 ##### `GET` `/process/:processId`
 Get specific process
-Response
+<sub>Response</sub>
 ```
 {
     "createdAt": "2019-09-28T13:11:29.835Z",
@@ -182,7 +177,7 @@ Response
 }
 ```
 
-#### Brews
+### :beers: Brews :beers:
 A brew starts of with just a name and category, then it is populated with processes, which in turn is populated by ingredients. 
 
 ##### `POST` `/brew`
@@ -193,7 +188,7 @@ Create new brew. See availible fields here.
     "category": "Kefir"
 }
 ```
-Response
+<sub>Response</sub>
 ```
 {
     "message": "Created brew",
@@ -208,7 +203,7 @@ Include fields that you want to change, they are merged with current data. Field
     "name": "Plain pomegranate",
 }
 ```
-Response
+<sub>Response</sub>
 ```
 {
     "message": "Updated brew"
@@ -222,7 +217,7 @@ Add or update a users rating (1-10) of a brew.
     "rating": 6,
 }
 ```
-Response
+<sub>Response</sub>
 ```
 {
     "message": "Rating set"
@@ -231,7 +226,7 @@ Response
 
 ##### `GET` `/brew/:brewId`
 Get all the data for the brew. Includes more data than the `/brews` endpoint.
-Response
+<sub>Response</sub>
 ```
 {
     "rating": 6,
