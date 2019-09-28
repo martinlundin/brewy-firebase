@@ -6,6 +6,7 @@ exports.createBrew = (request, response) => {
         createdBy: request.user.email,
         name: request.body.name,
         category: request.body.category,
+        rating: null,
         ratings: {},
     }
 
@@ -44,13 +45,29 @@ exports.updateBrew = (request, response) => {
 
 exports.setRating = (request, response) => {
     const brewId = request.params.brewId
-    const rating = {}
-    rating[`ratings.${request.user.uid}`] = request.body.rating
+    const thisRating = {}
+    thisRating[`ratings.${request.user.uid}`] = Number(request.body.rating)
 
-    db
-    .collection('brews')
-    .doc(brewId)
-    .update(rating)
+    const brewDocument = db.collection('brews').doc(brewId)
+
+    //Todo validate so rating is between 1-10
+
+    brewDocument
+    .update(thisRating)
+    .then(() => {
+        return brewDocument.get()
+    })
+    .then((doc) => {
+        const brew = doc.data()
+        let totalRating = 0;
+        Object.keys(brew.ratings).forEach(key => {
+            totalRating += brew.ratings[key]
+        })
+        const newRating = {
+            rating: totalRating/Object.keys(brew.ratings).length
+        }
+        return brewDocument.update(newRating)
+    })
     .then(() => {
         return response.json({ message: `Rating set`})
     })

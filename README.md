@@ -204,6 +204,7 @@ Example:
 | Status    | Description |
 | :-------: | ----------- | 
 | :x:       | Add reminder function.
+| :x:       | Add Data validation and error response messages (do when settings up typechecking)
 | :x:       | Add typechecking for all incomming data.
 
 ---
