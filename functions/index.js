@@ -1,15 +1,23 @@
 const functions = require('firebase-functions');
 const app = require('express')();
 const { FBAuth } = require('./util/middleware')
+const cors = require('cors');
 
-const { register, login } = require('./handlers/users')
+const { register, login, updateUserData, getCurrentUserData } = require('./handlers/users')
 const { createIngredient, getAllIngredients } = require('./handlers/ingredients')
 const { createProcess, updateProcess, updateProcessIngredient, getProcess, deleteProcess } = require('./handlers/processes')
 const { createBrew, updateBrew, setRating, getBrew, getBrews } = require('./handlers/brews')
 
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
+
 // User routes
 app.post('/register', register)
 app.post('/login', login)
+app.put('/user', FBAuth, updateUserData)
+app.get('/user', FBAuth, getCurrentUserData)
 
 // Ingredients routes
 app.post('/ingredient', FBAuth, createIngredient);

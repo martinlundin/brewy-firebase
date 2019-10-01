@@ -271,6 +271,20 @@ Get all the data for the brew. Includes more data than the `/brews` endpoint.
 | :x:       | Change error handling to be consistent and precise
 | :x:       | Add linting for cleaner code
 | :x:       | Add process.ingredients.measurements, process.type and brew.category to their own collections. This would help so all users use the same naming
+| :x:       | Add variationOf to brew. This is when a brew is split into a variation. Data proposal below.
+| :x:       | Add pattern or image field for better ux.
+
+Proposal of new POST brewVariation of data proposal.
+```
+{
+    "name": "Sour pomegranate",
+    "category": "Kefir",
+    "variationOf": {
+        fromBrewId: "QZTermlUvsZxV02KkpZi",
+        fromProcessId: "ASDDGlUvsdjas0fKkasS"
+    }
+}
+```
 
 ---
 
