@@ -295,12 +295,12 @@ Proposal of new POST brewVariation of data proposal.
 | :x:       | Make process-types as a collection and add more information about the type, like description, images and such. For now it is just a string.
 | :x:       | Make brew catagory as a collection and add more information about the type, like description, images and such. For now it is just a string.
 
-If you have any issues or improvments, please open one in this github repository.
+If you have any issues or improvments, please open a issue in this github repository.
 
 ---
 
-## Development
-You are very welcome to add contribute to the project. Follow these steps.
+## Contribute
+You are very welcome to contribute to the project. Follow these steps to install for development.
 #### Installation
 - Clone this project from git, in terminal run `git clone https://github.com/martinlundin/brewy-firebase.git`
 - Go to `https://console.firebase.google.com` and create your own Firebase project.
