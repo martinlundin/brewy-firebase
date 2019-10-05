@@ -4,8 +4,9 @@ exports.createBrew = (request, response) => {
     const newBrew = {
         createdAt: new Date().toISOString(),
         createdBy: request.user.uid,
-        name: request.body.name,
-        category: request.body.category,
+        name: (request.body.name ? request.body.name : ""),
+        category: (request.body.category ? request.body.category : ""),
+        pattern: (request.body.pattern ? request.body.pattern : ""),
         rating: null,
         ratings: {},
     }
