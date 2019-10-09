@@ -6,7 +6,7 @@ module.exports.FBAuth = (request, response, next) => {
         idToken = request.headers.authorization.split('Bearer ')[1];
     } else {
         console.error('No token found in request header')
-        return response.status(403).json({ error: 'Unauthorized'});
+        return response.status(403).json({ error: { message : 'Unauthorized' }});
     }
 
     admin.auth().verifyIdToken(idToken)
