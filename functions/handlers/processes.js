@@ -96,6 +96,43 @@ exports.getProcess = (request, response) => {
     })
 }
 
+exports.getProcesses = (request, response) => {
+    const limit = (request.query.limit ? Number(request.query.limit) : 10)
+    const orderBy = (request.query.orderBy ? request.query.orderBy : 'startedAt')
+    const sort = (request.query.sort ? request.query.sort : 'desc')
+    const brewId = (request.query.brewId ? request.query.brewId : '')
+    const type = (request.query.type ? request.query.type : '')
+
+    let query = db
+    .collection('processes')
+    .limit(limit)
+    .orderBy(orderBy, sort)
+
+    query = (brewId ? query.where('brewId', '==', brewId) : query)
+    query = (type ? query.where('type', '==', type) : query)
+
+    query
+    .get()
+    .then(snapshot => {
+
+        if (snapshot.empty) {
+            return response.status(404).json({ error: { message: 'No process found' } })
+        }
+        let processes = [];
+        snapshot.forEach(doc => {
+            processes.push({
+                id: doc.id,
+                ...doc.data()
+            })
+        });
+        return response.json(processes)
+    })
+    .catch(error => {
+        console.error(error)
+        return response.status(500).json({ error })
+    })
+}
+
 exports.deleteProcess = (request, response) => {
     const processDocument = db.collection('processes').doc(request.params.processId)
 

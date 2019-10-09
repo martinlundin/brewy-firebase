@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const { register, login, updateUserData, getCurrentUserData } = require('./handlers/users')
 const { createIngredient, getAllIngredients } = require('./handlers/ingredients')
-const { createProcess, updateProcess, updateProcessIngredient, getProcess, deleteProcess } = require('./handlers/processes')
+const { createProcess, updateProcess, updateProcessIngredient, getProcess, getProcesses, deleteProcess } = require('./handlers/processes')
 const { createBrew, updateBrew, setRating, getBrew, getBrews } = require('./handlers/brews')
 
 app.use(cors({
@@ -29,6 +29,7 @@ app.put('/process/:processId', FBAuth, updateProcess);
 app.post('/process/:processId/ingredient/:action', FBAuth, updateProcessIngredient);
 app.delete('/process/:processId', FBAuth, deleteProcess);
 app.get('/process/:processId', getProcess);
+app.get('/processes', getProcesses);
 
 // Brew routes
 app.post('/brew', FBAuth, createBrew);

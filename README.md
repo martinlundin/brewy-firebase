@@ -177,6 +177,39 @@ Get specific process
 }
 ```
 
+##### `GET` `/processses/`
+Availible query get parameters: 
+`orderBy` <sub>default is **startedAt**</sub>
+`sort` <sub>default is **desc**</sub>
+`limit` <sub>default is **10**</sub>
+`brewId`
+`type`
+
+<sub>Request</sub>
+`/processes/?brewId=QZTermlUvsZxV02KkpZi`
+
+<sub>Response</sub>
+```
+[
+    {
+        "id": "SLRyBqNfDZdzjGesskSV",
+        "type": "Fermentation",
+        "brewId": "QZTermlUvsZxV02KkpZi",
+        "createdBy": "MyJsai54Q8gJYVJAR1uVVz4ZRw43",
+        "createdAt": "2019-09-28T13:11:29.835Z",
+        "startedAt": "2019-09-28T11:54:23.766Z",
+        "ingredients": [
+            {
+                "measurement": "liter",
+                "name": "Water",
+                "amount": 1
+            }
+        ],
+        "updatedAt": "2019-09-28T13:13:29.650Z"
+    }
+]
+```
+
 ### :beers: Brews :beers:
 A brew starts of with just a name and category, then it is populated with processes, which in turn is populated by ingredients. 
 
@@ -259,6 +292,32 @@ Get all the data for the brew. Includes more data than the `/brews` endpoint.
 }
 ```
 
+##### `GET` `/brews`
+Get brews.
+Availible query get parameters: 
+`orderBy` <sub>default is **rating**</sub>
+`sort` <sub>default is **asc**</sub>
+`limit` <sub>default is **10**</sub>
+
+<sub>Request</sub>
+`/brews/`
+<sub>Response</sub>
+```
+[
+    {
+        "rating": 6,
+        "updatedAt": "2019-09-28T12:02:40.926Z",
+        "ratings": {
+            "MyJsai54Q8gJYVJAR1uVVz4ZRw43": 6
+        },
+        "name": "Plain pomegranate",
+        "category": "Kefir",
+        "createdBy": "MyJsai54Q8gJYVJAR1uVVz4ZRw43",
+        "createdAt": "2019-09-28T11:54:23.766Z",
+        "brewId": "QZTermlUvsZxV02KkpZi",
+    }
+]
+```
 
 ---
 
