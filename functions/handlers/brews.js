@@ -6,6 +6,7 @@ exports.createBrew = (request, response) => {
         createdBy: request.user.uid,
         name: (request.body.name ? request.body.name : ""),
         category: (request.body.category ? request.body.category : ""),
+        date: (request.body.date ? request.body.date : new Date().toISOString()),
         pattern: (request.body.pattern ? request.body.pattern : ""),
         rating: null,
         ratings: {},
@@ -35,6 +36,7 @@ exports.updateBrew = (request, response) => {
         brew.updatedAt = new Date().toISOString()
         if(request.body.name) brew.name = request.body.name
         if(request.body.category) brew.category = request.body.category
+        if(request.body.date) brew.date = request.body.date
 
         return brewDocument.update(brew)
     })
