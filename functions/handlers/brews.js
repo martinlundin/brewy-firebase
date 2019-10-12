@@ -102,7 +102,7 @@ exports.getBrew = (request, response) => {
     .then(data => {
         brewData.processes = [];
         data.forEach(doc => {
-            brewData.processes.push(doc.data())
+            brewData.processes.push({ ...doc.data(), processId: doc.id})
         })
         return response.json(brewData);
     })

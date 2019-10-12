@@ -85,7 +85,7 @@ exports.getProcess = (request, response) => {
     .get()
     .then(doc => {
         if (doc.exists) {
-            return response.json({ ...doc.data() })
+            return response.json({ ...doc.data(), processId: doc.id })
         } else {
             return response.status(404).json({ error: { message: 'No process with that id' } })
         }
@@ -121,7 +121,7 @@ exports.getProcesses = (request, response) => {
         let processes = [];
         snapshot.forEach(doc => {
             processes.push({
-                id: doc.id,
+                processId: doc.id,
                 ...doc.data()
             })
         });
