@@ -99,7 +99,7 @@ exports.getProcess = (request, response) => {
 exports.getProcesses = (request, response) => {
     const limit = (request.query.limit ? Number(request.query.limit) : 10)
     const orderBy = (request.query.orderBy ? request.query.orderBy : 'startedAt')
-    const sort = (request.query.sort ? request.query.sort : 'desc')
+    const sort = (request.query.sort ? request.query.sort : 'asc')
     const brewId = (request.query.brewId ? request.query.brewId : '')
     const type = (request.query.type ? request.query.type : '')
 

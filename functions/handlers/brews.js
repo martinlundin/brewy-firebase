@@ -97,7 +97,7 @@ exports.getBrew = (request, response) => {
         } 
         brewData = doc.data();
         brewData.brewId = doc.id;
-        return db.collection('processes').where('brewId', '==', brewId).orderBy('startedAt', 'desc').get()
+        return db.collection('processes').where('brewId', '==', brewId).orderBy('startedAt', 'asc').get()
     })
     .then(data => {
         brewData.processes = [];
