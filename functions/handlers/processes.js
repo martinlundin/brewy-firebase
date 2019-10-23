@@ -7,6 +7,7 @@ exports.createProcess = (request, response) => {
         brewId: request.body.brewId,
         type: request.body.type,
         startedAt: (request.body.startedAt ? request.body.startedAt : new Date().toISOString()),
+        ingredients: (request.body.ingredients ? request.body.ingredients : []),
     }
 
     db
